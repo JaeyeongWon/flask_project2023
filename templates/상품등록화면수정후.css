@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #F6E7E6;
+    color: #2D2D2D;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+.second-navbar {
+    background-color: #E5C3A6;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.image-upload {
+    text-align: center;
+    border: 2px dashed #ccc;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.image-upload-button {
+    background-color: #943F2F;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-with-unit {
+    display: flex;
+    align-items: center;
+}
+
+.input-with-unit input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.input-with-unit::after {
+    content: '원';
+    margin-left: 5px;
+}
+
+.product-description {
+    height: 300px;
+    width: 100%;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.submit-button {
+    display: block;
+    margin: 20px auto;
+    background-color: #F8D57E;
+    color: #2D2D2D;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer {
+    border-top: 1px solid #ccc;
+    padding: 20px 0;
+    text-align: center;
+}
+
+label {
+    margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
+}
+
+.purple-box {
+    background-color: #F7F5FD; /* 연보라색 배경 */
+    color: #2D2D2D; /* 텍스트 색상을 검은색으로 설정 */
+    padding: 20px;
+    margin-top: 20px;
+}

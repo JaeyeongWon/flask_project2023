@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>상품 등록</title>
+    <script src="productRegister.js"></script>
+</head>
+<body>
+    <h1>상품 등록</h1>
+
+<!-- 터미널 출력 확인용 -->
+<!-- <form action="/submit" method="post"> -->
+    
+<!-- result 페이지용 -->
+    <form action="/productSubmitResult" method="post">
+        <!-- 상품명 입력란 -->
+        <label for="product-title">상품명(글제목)</label>
+        <input type="text" id="product-title" name="product-title" required>
+        <br>
+
+        <!-- 가격방식 선택 (일반거래, 경매) -->
+        <label>가격방식:</label>
+        <input type="radio" id="normal" name="price-method" value="일반거래" required>
+        <label for="normal">일반거래</label>
+        <input type="radio" id="auction" name="price-method" value="경매">
+        <label for="auction">경매</label>
+        <br>
+
+        <!-- 추가 입력 필드 (일반거래 및 경매 정보) -->
+        <div id="normal-fields" style="display:none;">
+            <label for="normal-price">판매가</label>
+            <input type="number" id="normal-price" name="normal-price">
+            <br>
+        </div>
+
+        <div id="auction-fields" style="display:none;">
+            <label for="auction-end-date">경매마감일</label>
+            <input type="datetime-local" id="auction-end-time" name="auction-end-time">
+            <br>
+            <label for="auction-min-bid">최저낙찰가</label>
+            <input type="number" id="auction-min-bid" name="auction-min-bid">
+            <br>
+            <label for="auction-max-bid">최고낙찰가</label>
+            <input type="number" id="auction-max-bid" name="auction-max-bid">
+            <br>
+        </div>글
+
+        <!-- 상세설명 입력란 -->
+        <label for="product-description">상세설명</label>
+        <textarea id="product-description" name="product-description" rows="4" required></textarea>
+        <br>
+
+        <!-- 회원아이디 (자동 기록) -->
+        <input type="hidden" id="user-id" name="user-id" value="사용자아이디">
+        <br>
+
+        <!-- 글작성날짜 (자동 기록) -->
+        <input type="hidden" id="post-date" name="post-date">
+        <br>
+
+        <!-- 제출 버튼 -->
+        <input type="submit" value="상품 등록">
+    </form>
+
+    <script>
+        // 가격방식 선택에 따른 추가입력필드 바꾸기
+        const normalRadio = document.getElementById('normal');
+        const auctionRadio = document.getElementById('auction');
+        const normalFields = document.getElementById('normal-fields');
+        const auctionFields = document.getElementById('auction-fields');
+
+        normalRadio.addEventListener('change', () => {
+            if (normalRadio.checked) {
+                normalFields.style.display = 'block';
+                auctionFields.style.display = 'none';
+            }
+        });
+
+        auctionRadio.addEventListener('change', () => {
+            if (auctionRadio.checked) {
+                auctionFields.style.display = 'block';
+                normalFields.style.display = 'none';
+            }
+        });
+        
+        //작성날짜
+        const currentDateTime = new Date();
+        const year = currentDateTime.getFullYear();
+        const month = String(currentDateTime.getMonth() + 1).padStart(2, '0'); // Adding 1 to month because it's 0-based
+        const date = String(currentDateTime.getDate()).padStart(2, '0');
+        const hour = String(currentDateTime.getHours()).padStart(2, '0');
+        const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
+
+        const formattedDateTime = `${year}-${month}-${date} ${hour}:${minutes}`;
+        document.getElementById("post-date").value = formattedDateTime;
+    </script>
+</body>
+</html>

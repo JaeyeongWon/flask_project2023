@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href="home.css">
+
+    <script src="{{url_for('static', filename='main.js')}}" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="">Ewha GamjaMarket</a>
+        </div>
+        <ul class="navbar__menu">
+            <li><a href="/productList">product list</a></li>
+            <li><a href="/myReview">my review</a></li>
+            <li><a href="/productRegister">register products</a></li>
+            <li><a href="/reviewRegister">register reviews</a></li>
+            <li><a href="/productSubmitResult">result</a></li>
+        </ul>
+        <a href="#" class="navbar__toggleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+    <div class="swipe">
+
+        <br><br><br><br>
+    <h2>넘기고<br>찜하세요</h2>
+    <p>쇼핑은 하고 싶은데, 사고싶은 물건이 눈에 띄지 않았나요?
+        플립뷰 기능을 사용해서 가볍게 넘기고, 마음에 드는 물건을
+        찜하세요! 더욱 간편해진 물건 탐색을 도와드릴게요.
+    </p>   
+    <button class="swipe-button">플립뷰 사용하기</button>
+        <br><br><br><br><br>
+
+    </div>
+
+    <div class="items">                 /* items와 heart의 목록 같음 - css수정시 수정필요*/
+        <h4>따근따근하게 올라온 상품    <button class="view-button" onclick="showAllItems()">전체보기></button></h4>
+
+        <ul class="horizontal-list">
+            <li>
+                <img src="텀블러.png" alt="Image 1">
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <img src="텀블러.png" alt="Image 2">
+                <a href="#products">Products</a>
+            </li>
+            <li>
+                <img src="텀블러.png" alt="Image 3">
+                <a href="#about">About Us</a>
+            </li>
+            <li>
+                <img src="텀블러.png" alt="Image 4">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+
+        
+    </div>
+
+    <div class="heart">
+        <h4>내가 찜한 상품    <button class="view-button" onclick="showAllItems()">전체보기></button></h4>
+        
+        <ul class="horizontal-list">
+            <li>
+                <img src="텀블러.png" alt="Image 1">
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <img src="텀블러.png" alt="Image 2">
+                <a href="#products">Products</a>
+            </li>
+            <li>
+                <img src="텀블러.png" alt="Image 3">
+                <a href="#about">About Us</a>
+            </li>
+            <li>
+                <img src="텀블러.png" alt="Image 4">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <footer>
+        <div class="text-section">
+            <p><h3>감자마켓</h3></p>
+            <p>여기에는 감자마켓의 설립 모토와 제공 서비
+                스에 대한 설명이 들어갑니다. 뭘 써야할까
+                찐감자 맛있겠다 휴게소 감자 감자칩 프라이
+                감자
+            </p>
+
+            <p>2023PotatoMarket. All rights reserved</p>
+        </div>
+        <div class="text-section">
+            <p>address</p>
+            <p> 우편번호 123456</p>
+            <p>contact</p>
+        </div>
+    </footer>
+<section>
+    {% block section %}
+
+	{% endblock section %}
+</section>
+</body>
+</html>

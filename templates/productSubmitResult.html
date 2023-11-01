@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>상품 등록 결과</title>
+</head>
+<body>
+    <h1>상품 등록 결과</h1>
+
+    <p>상품명(글제목): {{ data['product-title'] }}</p>
+    <p>가격방식: {{ data['price-method'] }}</p>
+
+    {% if data['price-method'] == "일반거래" %}
+        <p>판매가: {{ data['normal-price'] }}</p>
+    {% endif %}
+
+    {% if data['price-method'] == "경매" %}
+        <p>경매마감일: {{ data['auction-end-time'] }}</p>
+        <p>최저낙찰가: {{ data['auction-min-bid'] }}</p>
+        <p>최고낙찰가: {{ data['auction-max-bid'] }}</p>
+    {% endif %}
+
+    <p>상세설명: {{ data['product-description'] }}</p>
+    <p>글작성날짜: {{ data['post-date'] }}</p>
+
+</body>
+</html>
