@@ -1,0 +1,108 @@
+ul{
+    list-style-type: None;
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+    background-color: #F6E7E6;
+  }
+    li{
+        float: left;
+    }
+    li a{
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: None;
+    }
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+  .active{
+    background-color: #F6E7E6;
+  }
+  
+  .navbar {
+          background-color: #F6E7E6;
+          margin: 0; /* 이 부분을 추가하여 margin을 0으로 설정합니다 */
+          padding: 0;
+          
+  }
+  
+  .swipe{
+      background-color: #F7F5FD;
+  }
+
+  .swipe-button{
+      background-color: #F8D57E;
+      color: black;
+      padding: 8px 15px;
+      border:none;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 13px;
+      margin: 10px;
+      cursor: pointer;
+  }
+
+  .view-button {
+      background-color: white;
+      color: black;
+      padding: 8px 15px;
+      border:1px solid black;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 13px;
+      margin: 10px;
+      cursor: pointer;
+  }
+
+  .items{
+      margin-left: 20px;
+  }
+  .heart{
+      margin-left: 20px;
+  }
+
+  /* 스타일링된 가로 목록 스타일 */
+  .horizontal-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background-color: white; /* 배경색을 하얀색으로 설정 */
+  }
+
+  .horizontal-list li {
+      display: flex; /* 항목 내에서 이미지와 텍스트를 세로로 나열하기 위해 Flexbox 사용 */
+      flex-direction: column; /* 항목 내에서 아이템을 세로로 배치 */
+      align-items: center; /* 항목을 수평 가운데 정렬 */
+      margin-right: 10px;
+      text-align: center; /* 텍스트 가운데 정렬 */
+      border: 1px solid black; /* 테두리를 검은색으로 추가 */
+      padding: 10px; /* 테두리와 내용 사이의 간격 설정 */
+  }
+
+  .horizontal-list img {
+      width: 30px; /* 이미지의 너비 설정 */
+      height: 30px; /* 이미지의 높이 설정 */
+      margin-bottom: 5px; /* 이미지 아래와 텍스트 간의 간격 설정 */
+      border: 1px solid black; /* 이미지에도 테두리를 검은색으로 추가 */
+      padding: 5px; /* 이미지와 테두리 사이의 간격 설정 */
+  }
+
+  footer {
+      display: flex;
+      justify-content: space-between; /* 왼쪽과 오른쪽을 공간을 균등하게 배치 */
+      align-items: center; /* 아이템을 수직 가운데 정렬 */
+      padding: 10px; /* 내용 주위에 간격 추가 */
+      background-color: white;
+  }
+
+  .text-section {
+      flex: 1; /* 공간을 남은 공간에 맞게 분배 */
+      margin: 20px; /* 여백 추가 */
+  }
