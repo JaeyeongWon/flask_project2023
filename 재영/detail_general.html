@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>상품상세 - 일반거래하는 경우</title>
+    <style>
+        * {
+            font-family: Pretendard, Consolas, sans-serif;
+        }
+
+        body {
+            font-family: Pretendard, Consolas, Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        nav {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex; /* ul을 가로로 나열 */
+        }
+
+        nav a {
+            text-decoration: none;
+            white-space: nowrap; /* 텍스트가 한 줄로 나타나도록 합니다. */
+            color: #000000;
+        }
+
+        nav li {
+            margin: 0 10px; /* 각 요소들 사이의 간격 수정 */
+        }
+
+        nav input {
+            padding: 10px 20px; /* 위아래 10px, 좌우 20px의 패딩을 설정 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 400px; /* 원하는 길이로 조절 */
+            height: 20px;
+        }
+
+        .third-navbar {
+            background-color: #e1b99c;
+            height: 60px;
+            font-size: 20px;
+            display: flex;
+            align-items: center; /* 수직 가운데 정렬을 위해 추가 */
+        }
+
+        .third-navbar a {
+            font-weight: bold;
+            color:brown;
+        }
+
+        .third-navbar a:not(:nth-child(6)):not(:nth-child(7)) {
+            color: white;
+        }
+
+        .third-navbar a:nth-child(even) {
+            margin-left: 0; /* 짝수 인덱스(0부터 시작)의 요소의 왼쪽 마진 초기화 */
+        }
+
+        .third-navbar a:nth-child(odd) {
+            margin-right: 30px; /* 홀수 인덱스(0부터 시작)의 요소의 우측 마진 설정 */
+        }
+
+        .search-button {
+            background-color: #F6E7E6;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        header {
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-bottom: 20px;
+            background-color: #F6E7E6;
+            color: #000000;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-upload img {
+            max-width: 100%; /* 이미지가 부모 요소에 맞게 크기 조절 */
+            max-height: 100%; /* 이미지가 부모 요소에 맞게 크기 조절 */
+        }
+
+        .product-description {
+            height: 300px;
+            width: 40%;
+            resize: vertical;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin: 0 auto; /* 가로 가운데 정렬을 위해 추가된 속성 */
+        }
+
+        .product-description h2 {
+            text-align: center;
+        }
+
+        label {
+            margin-right: 20px;
+        }
+
+        footer {
+            color: #2D2D2D;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #ccc; /* Add this line to create a border above the footer */
+            font-size: 16px; /* Increase the font size as desired */
+        }
+
+        .info {
+            text-align: center; /* Change the text alignment to center */
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .left-content {
+            width: 50%;
+            text-align: justify;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        /* 새로운 스타일 추가 */
+        .info {
+            text-align: left; /* Align the text to the left */
+            margin-left: 100px;
+        }
+
+        /* 새로운 스타일 추가 - 제목 스타일 설정 */
+        .market-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* 새로운 스타일 추가 - 저작권 문구 스타일 설정 */
+        .copyright {
+            font-size: 14px;
+        }
+
+        .text-section {
+            flex: 1; /* 공간을 남은 공간에 맞게 분배 */
+            margin: 0 500px; /* 여백 추가 */
+            text-align: left;
+        }
+
+        /* Add these styles to move user links to the right */
+        /* Add these styles to move user links to the right with 25px spacing */
+        nav .user-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+
+        nav .user-links li {
+            margin-left: 25px; /* Add a 25px margin to the left of user links */
+        }
+
+        /* Adjust the margin for the search button */
+        nav .search-button {
+            margin-right: 25px; /* Add a 25px margin to the right of the search button */
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 15px; /* 15px 여백 추가 */
+            border: 1px solid magenta; /* 원하는 테두리 스타일 및 색상 설정 */
+            border-radius: 15px; /* 테두리를 둥글게 만들기 */
+            padding: 10px; /* 박스 내부 여백 설정 */
+        }
+
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 65px; /* 15px 여백 추가 */
+            padding: 65px; /* 박스 내부 여백 설정 */
+        }
+
+        .image-wrapper img {
+            max-width: 100%; /* 이미지가 부모 요소에 맞게 크기 조절 */
+            max-height: 100%; /* 이미지가 부모 요소에 맞게 크기 조절 */
+            border-radius: 15px; /* 이미지 테두리를 둥글게 만들기 */
+            padding: 30px; /* 이미지와 테두리 사이에 10px의 여백 추가 */
+        }
+
+        .custom-image {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            bottom: 10px;
+            right: 680px;
+        }
+
+        .comment-box {
+            display: flex;
+            margin: 20px;
+        }
+
+        .comment-textbox {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .comment-submit-button {
+            background-color: #F8D57E;
+            color: #2D2D2D;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .buy-reply {
+            background-color:#d5c5f4;
+            border-radius: 15px; /* 둥근 테두리 반지름 설정 */
+            margin-left: 30px; /* 왼쪽 여백 설정 */
+            margin-right: 30px;
+            padding: 10px; /* 내부 여백 설정 (텍스트와 테두리 사이의 공간) */
+        }
+
+        .sel-reply {
+            border: 3px solid #d5c5f4;
+            border-radius: 15px;
+            margin-left: 30px;
+            margin-right: 30px;
+            padding: 10px;
+        }
+
+        .purchase-button {
+            background-color: #F8D57E;
+            color: #2D2D2D;
+            padding: 15px 80px; /* 버튼 크기를 조절합니다. */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 30px; /* 폰트 크기를 늘립니다. */
+            font-weight: bold; /* 굵게 만듭니다. */
+            font-size: 18px;
+            margin-top: 40px;
+            margin-left: 0;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>GamjaMarket</h2>
+        <nav>
+            <div>
+                <ul>
+                    <li><a href="#">홈</a></li>
+                </ul>
+            </div>
+            <input type="text" placeholder="찾으시는 상품명을 입력하세요">
+            <button class="search-button">검색</button>
+            <ul class="user-links">
+                <li><a href="login.html">회원가입/로그인</a></li>
+                <li><a href="mypage-profile.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="third-navbar">
+        <a style="margin-left: 20px;">나의 위치 |</a>
+        <a href="#">홈 화면</a>
+        <a href="#">x</a>
+        <a href="#">전체 상품 조회</a>
+        <a href="#">x</a>
+        <a href="#">상품 상세</a>
+        <a href="#">x</a>
+    </div>
+
+    <div class="image-wrapper">
+        <img src="https://www.wellbow.co.kr/wp-content/uploads/2018/11/kinto_black_12oz_01.jpg" style="width:300px; height: 300px; border: 3px solid gray; border-radius: 15px;" alt="상품 이미지">
+        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/54147/sparkling-heart-emoji-clipart-md.png" class="custom-image" alt="맘찍">
+    </div>
+    <div class="text-section">
+        <h4>상품명</h4>
+        <p style="font-size: 30px; font-weight: bold;">끝내주는 텀블러</p>
+        <br>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <h4>가격</h4>
+                <p style="font-size: 30px; font-weight: bold;">20000원</p>
+            </div>
+            <div style="flex: 1;">
+                <!-- 이 부분에 '구매하기' 버튼을 추가 -->
+                <button class="purchase-button">구매하기</button>
+            </div>
+        </div>
+        <br>
+        <h4>가능한 거래 방식</h4>
+        <p style="font-size:30px; font-weight: bold;"><a href="#"><img src="https://ifh.cc/g/oQv5Na.png" style="width:200px; height: 80px;"></a> <a href="#" style="margin-left: 20px;"><img src="https://ifh.cc/g/SPZYrT.png" style="width: 320px; height: 80px;"></a></p>
+        <br>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <h4>판매자</h4>
+                <p style="font-size: 30px; font-weight: bold;">햇감자포카칩</p>
+            </div>
+            <div style="flex: 1;">
+                <h4>상품 등록일</h4>
+                <p style="font-size: 30px; font-weight: bold;">2023.10.09</p>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="product-description" style="text-align: justify;">
+        <h2>상세 설명</h2>
+        <p style="font-size: 14px; border-radius: 20px; max-width: 400px; margin: 0 auto; resize: vertical;">이곳은 상품의 상세설명을 보여주는 곳입니다. 끝내주는 텀블러를 어떻게 하면 비싸게 팔 수 있을까요? 저는 500000원에 팔렸으면 좋겠습니다. 스벅 텀블러보다 비싸네요. 에어팟보다 비쌉니다. 그러나 정말, "끝내주는" 텀블러이기 때문에 소장 가치가 충분할 겁니다. 상세설명만큼은 글자 크기가 작은 것이 좋을 것 같네요. 말이 구구절절 길어질 수 있으니까요.</p>
+    </div>
+    <br><br>
+    <div class="comment-section">
+        <h2 style="margin-left: 20px;">댓글</h2>
+        <div class="comment-box">
+            <textarea class="comment-textbox" placeholder="댓글을 입력하세요"></textarea>
+            <button class="comment-submit-button">게시</button>
+        </div>
+    </div>
+    <br>
+    <div class="buy-reply">
+        <div class="comment-description">
+            <h3>구매하려고 하는 사람 1</h3>
+            <p>감사합니다~</p>
+        </div>
+    </div>
+    <br>
+    <div class="sel-reply">
+        <div class="comment-description">
+            <h3>판매자 (햇감자포카칩)</h3>
+            <p>완전 새제품이에용~</p>
+        </div>
+    </div>
+    <br>
+    <div class="buy-reply">
+        <div class="comment-description">
+            <h3>구매하려고 하는 사람 1</h3>
+            <p>상품에 하자 있나요?</p>
+        </div>
+    </div>
+    
+    <br><br><br><br><br>
+    <footer>
+        <div class="left-content">
+            <h2 class="market-title">감자마켓</h2>
+            여기에는 감자마켓의 설립 모토와 제공 서비스에 대한 설명이 들어갑니다. 찐감자 맛있겠다 휴게소 감자 감자칩 프라이감자
+        </div>
+        <div class="info">
+            <p class="title">Address</p>
+            <ul style="font-size: 18px;">
+                <p>우편번호 12345</p>
+                <p>상세주소: 감자공화국 감자특별시 감자길5 67 감자건물 505호</p>
+            </ul>
+            <br><br>
+            <p class="title">Contact</p>
+            <ul style="font-size: 18px;">
+                <p>Twitter - @potatomarket_official</p>
+                <p>Instagram - @potatomarket_official</p>
+                <p>Phone number - (+82)02-1234-5678</p>
+                <p>Email - potatomarket@gmail.com</p>
+            </ul>
+        </div>
+    </footer>
+    <div class="copyright">
+        @2023 PotatoMarket. All rights reserved.
+    </div>
+</body>
+</html>

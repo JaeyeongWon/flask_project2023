@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Auction List</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+    <script src="{{url_for('static', filename='main.js')}}" defer></script>
+    <style>
+        ul {
+            list-style-type: None;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F6E7E6;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: None;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #f4d8d8;
+        }
+
+        .active {
+            background-color: #F6E7E6;
+        }
+
+        .navbar {
+            background-color: #F6E7E6;
+            margin: 0;
+            padding: 9px 10px;
+            margin-left: 20px;
+        }
+
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            /* 왼쪽과 오른쪽을 공간을 균등하게 배치 */
+            align-items: center;
+            /* 아이템을 수직 가운데 정렬 */
+            padding: 10px;
+            /* 내용 주위에 간격 추가 */
+            background-color: white;
+        }
+
+        .text-section {
+            flex: 1;
+            /* 공간을 남은 공간에 맞게 분배 */
+            margin: 20px;
+            /* 여백 추가 */
+        }
+
+        /* 메뉴 토글 버튼을 위한 CSS */
+        #menuToggleBtn {
+            font-size: 24px;
+            /* 필요에 따라 크기를 조정합니다 */
+            cursor: pointer;
+        }
+
+        /* 'active' 메뉴 상태를 위한 CSS */
+        .navbar__menu.active {
+            display: block;
+            position: absolute;
+            top: 50px;
+            /* 필요에 따라 상단 위치를 조정합니다 */
+            right: 0;
+            background-color: white;
+            z-index: 1;
+        }
+
+        .nav_bar_present {
+            background-color: #E5C3A6;
+            padding: 10px 30px;
+            text-align: left;
+            font-size: medium;
+        }
+
+        .nav_links {
+            color: #943F2F;
+            font-weight: bold;
+        }
+
+        .nav_link {
+            text-decoration: none;
+            color: #943F2F;
+            transition: color 0.3s;
+        }
+
+        .nav_link:hover {
+            color: white;
+            font-weight: bold;
+        }
+
+        .contents {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        .centered-text {
+            text-align: center;
+            color: #943F2F;
+        }
+
+        .num-Ing {
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .Ing-list {
+            display: flex;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+
+        .Ing-item {
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 180px;
+            height: 400px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .Ing-item-container {
+            position: relative;
+            /* 이미지 컨테이너에 상대적인 위치 지정 */
+        }
+
+        .Ing-item-text {
+            padding: 10px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            font-size: x-large;
+            text-align: center;
+            margin-left: 180px;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background-color: #f4d8d8;
+        }
+
+        .nav-divider {
+            width: 0.1px;
+            height: 30px;
+            background-color: rgb(48, 47, 47);
+        }
+
+
+        .Ing-item-clock {
+            position: absolute;
+            top: 10px;
+            /* 네모박스의 상단 간격 조절 */
+            left: 10px;
+            /* 네모박스의 왼쪽 간격 조절 */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 검정색 (0, 0, 0) 네모박스의 투명도 조절 (40% ~ 60%) */
+            color: #FFA800;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header style="background-color: #F6E7E6;">
+        <h1 class="navbar">감자마켓</h1>
+        <nav class="navbar">
+            <ul class="navbar__menu">
+                <li><a href="#" class="navbar__toggleBtn">
+                        <i class="fas fa-bars" id="menuToggleBtn"></i>
+                    </a></li>
+                <li>
+                    <div style="display: flex; align-items: center; margin-top: 15px;">
+                        <input type="text" placeholder="찾으시는 상품명을 입력하세요" style="width: 300px;">
+                        <button class="search-button">검색</button>
+                    </div>
+                </li>
+                <li><a href="login.html">회원가입/로그인</a></li>
+                <li><a href="myPage.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        // 메뉴 토글을 위한 JavaScript
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const navbarMenu = document.querySelector('.navbar__menu');
+
+        menuToggleBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+
+            // 클릭 시 menuBar.html로 이동
+            if (navbarMenu.classList.contains('active')) {
+                window.location.href = 'menuBar.html'; // 원하는 페이지로 이동
+            }
+        });
+    </script>
+
+    <nav class="nav_bar_present">
+        <!-- 네비게이션 바 내용 -->
+        <div class="nav_links">
+            <span style="color: white;">나의 위치 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 마이페이지 &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;</span>경매내역<a href="#" class="nav_link"> x</a>
+        </div>
+    </nav>
+
+    <div class="contents">
+        <h2>진행중인 경매</h2>
+        <div class="centered-text">
+            <h4 class="num-Ing">상품 10개</h4>
+        </div>
+    </div>
+
+
+    <!-- 거래 종류 선택바 -->
+    <nav class="nav">
+        <div class="nav-item" id="directTrade">대기</div>
+        <div class="nav-divider"></div>
+        <div class="nav-item" id="deliveryTrade">성공</div>
+        <div class="nav-divider"></div>
+        <div class="nav-item" id="boxTrade">실패</div><br>
+    </nav>
+
+    <script>
+        // 이벤트 핸들러 함수
+        function applyBorderStyle(element) {
+            // 모든 아이템의 스타일 초기화
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => {
+                item.style.border = 'none';
+                item.style.borderRadius = '0';
+            });
+
+            // 클릭한 아이템에 스타일 적용
+            element.style.border = '2px solid #FFA800';
+            element.style.borderRadius = '8px';
+        }
+
+        // '직거래'를 클릭했을 때 이벤트 핸들러
+        const directTradeItem = document.getElementById('directTrade');
+        directTradeItem.addEventListener('click', () => {
+            applyBorderStyle(directTradeItem);
+        });
+
+        // '택배거래'를 클릭했을 때 이벤트 핸들러
+        const deliveryTradeItem = document.getElementById('deliveryTrade');
+        deliveryTradeItem.addEventListener('click', () => {
+            applyBorderStyle(deliveryTradeItem);
+        });
+
+        // '비대면상자'를 클릭했을 때 이벤트 핸들러
+        const boxTradeItem = document.getElementById('boxTrade');
+        boxTradeItem.addEventListener('click', () => {
+            applyBorderStyle(boxTradeItem);
+        });
+    </script>
+
+
+    <div class="Ing-list">
+
+        <div class="Ing-item">
+            <div class="Ing-item-container">
+                <img src="tumbler.png" alt="거래 진행중 상품" width="150" height="200">
+                <!-- 경매 남은 시간 -->
+                <div class="Ing-item-clock">
+                    00:35:22
+                </div>
+            </div>
+            <div class="Ing-item-text">
+                3시간전
+                <h3>끝내주는 텀블러</h3>
+                <h4>20000원</h4>
+                <img src="deliveryThree.png" alt="배송정보" width="150" height="50">
+            </div>
+        </div>
+        <div class="Ing-item">
+            <div class="Ing-item-container">
+                <img src="tumbler.png" alt="거래 진행중 상품" width="150" height="200">
+                <!-- 경매 남은 시간 -->
+                <div class="Ing-item-clock">
+                    00:35:22
+                </div>
+            </div>
+            <div class="Ing-item-text">
+                3시간전
+                <h3>끝내주는 텀블러</h3>
+                <h4>20000원</h4>
+                <img src="deliveryThree.png" alt="배송정보" width="150" height="50">
+            </div>
+        </div>
+        <div class="Ing-item">
+            <div class="Ing-item-container">
+                <img src="tumbler.png" alt="거래 진행중 상품" width="150" height="200">
+                <!-- 경매 남은 시간 -->
+                <div class="Ing-item-clock">
+                    00:35:22
+                </div>
+            </div>
+            <div class="Ing-item-text">
+                3시간전
+                <h3>끝내주는 텀블러</h3>
+                <h4>20000원</h4>
+                <img src="deliveryThree.png" alt="배송정보" width="150" height="50">
+            </div>
+        </div>
+        <div class="Ing-item">
+            <div class="Ing-item-container">
+                <img src="tumbler.png" alt="거래 진행중 상품" width="150" height="200">
+                <!-- 경매 남은 시간 -->
+                <div class="Ing-item-clock">
+                    00:35:22
+                </div>
+            </div>
+            <div class="Ing-item-text">
+                3시간전
+                <h3>끝내주는 텀블러</h3>
+                <h4>20000원</h4>
+                <img src="deliveryThree.png" alt="배송정보" width="150" height="50">
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer>
+        <div class="text-section">
+            <p>
+                <hr style="border: 0; border-top: 1px solid gray; width: 200%;">
+            <h3>감자마켓</h3>
+            </p>
+            <p>여기에는 감자마켓의 설립 모토와 제공 서비스에 대한 설명이 들어갑니다. 이화여대 컴퓨터공학과 재학생 5명이 모여 만든 감자마켓에는 다양한 기능을 할 수 있는 페이지들이
+                있습니다.
+                와서
+                구경하세요!
+            </p>
+
+            <p>2023PotatoMarket. All rights reserved</p>
+        </div>
+        <div class="text-section">
+            <p>address 이화여자대학교 아산공학관 703호 감자마켓</p>
+            <p> 우편번호 011022</p>
+            <p>contact 010-9876-5432</p>
+        </div>
+
+
+    </footer>
+    <section>
+        {% block section %}
+
+        {% endblock section %}
+    </section>
+</body>
+
+</html>

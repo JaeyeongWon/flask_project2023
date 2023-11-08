@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>플립뷰</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        nav {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;              /*ul을 가로로 나열*/
+        }
+
+
+        nav a {
+            text-decoration: none;
+            white-space: nowrap;        /* 텍스트가 한 줄로 나타나도록 합니다. */
+            color: #000000;
+        }
+
+        nav li{
+            margin: 0 100px;             /*각 요소들 사이의 간격*/
+        }
+
+        nav input {
+            padding: 10px 20px;          /* 위아래 10px, 좌우 20px의 패딩을 설정 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 1200px;               /* 원하는 길이로 조절 */
+            height: 20px;
+        }
+
+        .search-button{
+            background-color: #F6E7E6;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        header{
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-bottom: 20px;
+            background-color: #F6E7E6;
+            color: #000000;
+        }
+
+        .swipe-things{
+            display: flex;
+            height: 75%;
+        }
+        .things{
+            display:flex;
+            width: 55%;
+            padding-top: 7%;
+            padding-left: 8%;
+
+        }
+        .things button{
+            color: rgb(42, 42, 42);
+            border: none;
+            border-radius: 5px;
+            font-size: 40px;
+            margin: 100px 50px 0 50px;
+            height: 70px;
+            width: 200px;
+        }
+
+        .image-container {
+        width: 1000px; /* 이미지 컨테이너의 너비를 설정 */
+        height: 500px; /* 이미지 컨테이너의 높이를 설정 */
+        background-color: gray; /* 이미지 컨테이너의 배경색을 설정 */
+        display: flex;
+        justify-content: center; /* 내부 내용을 가로 중앙 정렬 */
+        align-items: center; /* 내부 내용을 세로 중앙 정렬 */
+        }
+
+
+        .explanation-thing{
+            padding-top: 10%;
+            padding-left: 5%;
+            width:45%;
+        }
+
+        .explanation-thing button{
+            background-color: #F8D57E;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 300px;
+            height: 70px;
+            font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>GamjaMarket</h2>
+        <nav>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <input type="text" placeholder="찾으시는 상품명을 입력하세요">
+                <button class="search-button">검색</button>
+                <li><a href="login.html">회원가입/로그인</a></li>
+                <li><a href="mypage-profile.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="swipe-things">
+        <div class="things">
+            <button class="prev-button">prev < </button>
+            <div class="image-container">
+                <img src="텀텀블러.png" alt="상품 이미지">
+            </div>
+            <button class="arrow-button"> > next</button>
+        </div>
+
+        <div class="explanation-thing">
+            <h2>끝내주는 텀블러</h2>
+            <h3>20000원</h3>
+            <br><br>
+            <!--여기에 배송관련 정보 들어가야함-->
+            <button>상품 상세보기</button><br><br>
+            *방향키를 활용해 플립뷰 기능을 이용할 수 있어요.
+        </div>
+    </div>
+</body>

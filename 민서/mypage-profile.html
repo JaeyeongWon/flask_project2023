@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>마이페이지-마이프로필</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        nav {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;              /*ul을 가로로 나열*/
+        }
+
+
+        nav a {
+            text-decoration: none;
+            white-space: nowrap;        /* 텍스트가 한 줄로 나타나도록 합니다. */
+            color: #000000;
+        }
+
+        nav li{
+            margin: 0 100px;             /*각 요소들 사이의 간격*/
+        }
+
+        nav input {
+            padding: 10px 20px;          /* 위아래 10px, 좌우 20px의 패딩을 설정 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 1200px;               /* 원하는 길이로 조절 */
+            height: 20px;
+        }
+
+        .search-button{
+            background-color: #F6E7E6;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        header{
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-bottom: 20px;
+            background-color: #F6E7E6;
+            color: #000000;
+        }
+
+        
+
+        .my-info{
+            display: flex;
+            margin-top: 100px;
+            font-size: 20px;
+        }
+
+        .my-info img{
+            margin-left: 12%;
+            margin-right: 60px;
+        }
+
+        .my-id{
+            margin-right:90px;
+            margin-top: 70px;
+        }
+
+        .info-box{
+            border: 3px solid #F8D57E;
+            border-radius:10px;
+            margin-right:100px;
+            padding: 20px;
+            width: 250px;
+            height: 100px;
+        }
+
+        .on-purchase{
+            margin-left: 12%;
+            margin-top: 6%;
+        }
+
+        .on-purchase-list{
+            display: flex;
+        }
+
+        .on-purchase-item{
+            margin-right: 100px;
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 320px;
+            height: 450px;
+        }
+
+        .on-purchase-item-text{
+            padding: 20px;
+        }
+
+        .review{
+            margin-top: 5%;
+            margin-left: 12%;
+        }
+
+        .reviews{
+            margin-bottom: 2%;
+            background-color: #ece9f8;
+            font-size: 20px;
+            text-align: left;
+            padding: 20px;
+            width: 1600px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>GamjaMarket</h2>
+        <nav>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <input type="text" placeholder="찾으시는 상품명을 입력하세요">
+                <button class="search-button">검색</button>
+                <li><a href="login.html">회원가입/로그인</a></li>
+                <li><a href="mypage-profile.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="third-navbar">
+        <a>나의 위치 | </a>
+        <a href="#">마이페이지 X</a>
+        <a href="#">마이프로필 X</a>
+    </div>
+
+    <div class="my-info">
+        <img src="프로필사진.png" alt="프로필이미지">
+        <div class="my-id">
+            감자를봐감자야<br>@potatopopo
+        </div>
+        <div class="info-box">별점        </div>
+        <div class="info-box">판매횟수    </div>
+        <div class="info-box">구매횟수    </div>
+    </div>
+
+    <div class="on-purchase">
+        <h2>현재 판매중인 상품 <button>전체보기></button></h2>
+        <div class="on-purchase-list">
+            <div class="on-purchase-item">
+                <img src="찜상품.png" alt="판매중한 상품">
+                <div class="on-purchase-item-text">
+                    3시간전
+                    <h1>끝내주는 텀블러</h1>
+                    <h3>20000원</h3>
+                    <img src="배송정보이미지.png" alt="배송정보">
+                </div>
+            </div>
+            <div class="on-purchase-item">
+                <img src="찜상품.png" alt="판매중 상품">
+                <div class="on-purchase-item-text">
+                    3시간전
+                    <h1>끝내주는 텀블러</h1>
+                    <h3>20000원</h3>
+                    <img src="배송정보이미지.png" alt="배송정보">
+                </div>
+            </div>
+            <div class="on-purchase-item">
+                <img src="찜상품.png" alt="판매중 상품">
+                <div class="on-purchase-item-text">
+                    3시간전
+                    <h1>끝내주는 텀블러</h1>
+                    <h3>20000원</h3>
+                    <img src="배송정보이미지.png" alt="배송정보">
+                </div>
+            </div>
+            <div class="on-purchase-item">
+                <img src="찜상품.png" alt="판매중 상품">
+                <div class="on-purchase-item-text">
+                    3시간전
+                    <h1>끝내주는 텀블러</h1>
+                    <h3>20000원</h3>
+                    <img src="배송정보이미지.png" alt="배송정보">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="review">
+        <h2>감자를봐감자야 님과의 거래후기<button>전체보기></button></h2>
+        <div class="reviews">
+            별별별별별
+            거래자 닉네임<br>
+            최고의 거래였어요<br>
+            완전 친절하고 약속 잘지킴
+        </div>
+        <div class="reviews">
+            최고의 거래였어요<br>
+            완전 친절하고 약속 잘지킴
+        </div>
+    </div>
+</body>

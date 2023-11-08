@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+    <script src="{{url_for('static', filename='main.js')}}" defer></script>
+    <style>
+        ul {
+            list-style-type: None;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F6E7E6;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: None;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #f4d8d8;
+        }
+
+        .active {
+            background-color: #F6E7E6;
+        }
+
+        .navbar {
+            background-color: #F6E7E6;
+            margin: 0;
+            padding: 9px 10px;
+            margin-left: 20px;
+        }
+
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            /* 왼쪽과 오른쪽을 공간을 균등하게 배치 */
+            align-items: center;
+            /* 아이템을 수직 가운데 정렬 */
+            padding: 10px;
+            /* 내용 주위에 간격 추가 */
+            background-color: white;
+        }
+
+        .text-section {
+            flex: 1;
+            /* 공간을 남은 공간에 맞게 분배 */
+            margin: 20px;
+            /* 여백 추가 */
+        }
+
+        /* 메뉴 토글 버튼을 위한 CSS */
+        #menuToggleBtn {
+            font-size: 24px;
+            /* 필요에 따라 크기를 조정합니다 */
+            cursor: pointer;
+        }
+
+        /* 'active' 메뉴 상태를 위한 CSS */
+        .navbar__menu.active {
+            display: block;
+            position: absolute;
+            top: 50px;
+            /* 필요에 따라 상단 위치를 조정합니다 */
+            right: 0;
+            background-color: white;
+            z-index: 1;
+        }
+
+        .nav_bar_present {
+            background-color: #E5C3A6;
+            padding: 10px 30px;
+            text-align: left;
+            font-size: medium;
+        }
+
+        .nav_links {
+            color: #943F2F;
+            font-weight: bold;
+        }
+
+        .nav_link {
+            text-decoration: none;
+            color: #943F2F;
+            transition: color 0.3s;
+        }
+
+        .nav_link:hover {
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .my-info {
+            display: flex;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+
+        .my-info img {
+            margin-left: 6%;
+            margin-right: 60px;
+        }
+
+        .my-id {
+            margin-right: 90px;
+            margin-top: 70px;
+            font-size: large;
+            font-weight: bold;
+            white-space: nowrap;
+            /* 글자 줄바꿈 방지 */
+        }
+
+        .info-box {
+            border: 3px solid #FFA800;
+            border-radius: 10px;
+            margin-right: 50px;
+            margin-top: 40px;
+            width: 150px;
+            height: 60px;
+            padding: 10px;
+            font-size: medium;
+        }
+
+        .part-prof {
+            display: flex;
+            margin-top: 1%;
+        }
+
+        .left-part-prof {
+            flex: 1;
+            padding-left: 10%;
+            border-right: 1px solid #000;
+            /* 수직 구분선을 추가합니다. */
+            padding-right: 20px;
+            /* 선택 사항: 수직 구분선 뒤에 공백 추가 */
+        }
+
+        .right-part-prof {
+            flex: 1;
+            padding-left: 4%;
+        }
+
+        .part-prof a {
+            text-decoration: none;
+            /* 밑줄 제거 */
+            color: black;
+            /* 글씨 색상을 검정색으로 설정 */
+
+        }
+
+        .part-prof a:hover {
+            color: #943F2F;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header style="background-color: #F6E7E6;">
+        <h1 class="navbar">감자마켓</h1>
+        <nav class="navbar">
+            <ul class="navbar__menu">
+                <li><a href="#" class="navbar__toggleBtn">
+                        <i class="fas fa-bars" id="menuToggleBtn"></i>
+                    </a></li>
+                <li>
+                    <div style="display: flex; align-items: center; margin-top: 15px;">
+                        <input type="text" placeholder="찾으시는 상품명을 입력하세요" style="width: 300px;">
+                        <button class="search-button">검색</button>
+                    </div>
+                </li>
+                <li><a href="login.html">회원가입/로그인</a></li>
+                <li><a href="myPage.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        // 메뉴 토글을 위한 JavaScript
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const navbarMenu = document.querySelector('.navbar__menu');
+
+        menuToggleBtn.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+
+            // 클릭 시 menuBar.html로 이동
+            if (navbarMenu.classList.contains('active')) {
+                window.location.href = 'menuBar.html'; // 원하는 페이지로 이동
+            }
+        });
+    </script>
+
+    <nav class="nav_bar_present">
+        <!-- 네비게이션 바 내용 -->
+        <div class="nav_links">
+            <span style="color: white;">나의 위치 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; </span>마이페이지<a href="#"
+                class="nav_link"> x</a>
+        </div>
+    </nav>
+
+
+
+    <div class="my-info">
+        <img src="profileImg.png" alt="프로필이미지" width="180px" height="180px">
+
+        <div class="my-id">
+            감자를봐감자야<br>@potatopopo
+        </div>
+        <div class="info-box">
+            <span style="float: left;">별점</span><br>
+            <span style="float: right; color: #FFA800; font-size: 30px; font-weight: bold;">4.6점</span>
+        </div>
+
+        <div class="info-box"><span style="float: left;">판매횟수</span><br>
+            <span style="float: right; color: #FFA800; font-size: 30px; font-weight: bold;">24회</span>
+        </div>
+        <div class="info-box"><span style="float: left;">구매횟수</span><br>
+            <span style="float: right; color: #FFA800; font-size: 30px; font-weight: bold;">17회</span>
+        </div>
+    </div>
+
+    <div class="part-prof">
+        <div class="left-part-prof">
+            <h4><a href="#">상품 등록</a></h4>
+
+            <br>
+
+            <h4><a href="#">전체 거래내역(52)</a></h4>
+            <h4><a href="#">진행중인 거래(11)</a></h4>
+            <h4><a href="#">완료된 거래(41)</a></h4>
+
+            <br>
+
+            <h4><a href="#">경매 내역(10)</a></h4>
+        </div>
+
+        <div class="right-part-prof">
+            <h4><a href="#">나의 리뷰(5)</a></h4>
+
+            <br>
+
+            <h4><a href="#">나의 찜(27)</a></h4>
+
+            <br>
+
+            <h4><a href="#">판매중인 상품(7)</a></h4>
+
+            <br>
+
+            <h4><a href="#">마이프로필</a></h4>
+        </div>
+    </div>
+
+    <footer>
+        <div class="text-section">
+            <p>
+                <hr style="border: 0; border-top: 1px solid gray; width: 200%;">
+            <h3>감자마켓</h3>
+            </p>
+            <p>여기에는 감자마켓의 설립 모토와 제공 서비스에 대한 설명이 들어갑니다. 이화여대 컴퓨터공학과 재학생 5명이 모여 만든 감자마켓에는 다양한 기능을 할 수 있는 페이지들이
+                있습니다.
+                와서
+                구경하세요!
+            </p>
+
+            <p>2023PotatoMarket. All rights reserved</p>
+        </div>
+        <div class="text-section">
+            <p>address 이화여자대학교 아산공학관 703호 감자마켓</p>
+            <p> 우편번호 011022</p>
+            <p>contact 010-9876-5432</p>
+        </div>
+
+
+    </footer>
+    <section>
+        {% block section %}
+
+        {% endblock section %}
+    </section>
+</body>
+
+</html>

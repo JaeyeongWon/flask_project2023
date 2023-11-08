@@ -1,0 +1,158 @@
+<!--자바스크립스 적용 필요 / 비번 같은지 다른지, 이미 존재하는 아이디인지 등 작업 필요-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>회원가입</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+    
+    nav {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            font-size: 20px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;              /*ul을 가로로 나열*/
+    }
+
+
+    nav a {
+        text-decoration: none;
+        white-space: nowrap;        /* 텍스트가 한 줄로 나타나도록 합니다. */
+        color: #000000;
+    }
+
+    nav li{
+        margin: 0 100px;             /*각 요소들 사이의 간격*/
+    }
+
+    nav input {
+        padding: 10px 20px;          /* 위아래 10px, 좌우 20px의 패딩을 설정 */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 1200px;               /* 원하는 길이로 조절 */
+        height: 20px;
+    }
+
+    .search-button{
+        background-color: #F6E7E6;
+        color: #000000;
+        cursor: pointer;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    header{
+        padding-top: 40px;
+        padding-left: 40px;
+        padding-bottom: 20px;
+        background-color: #F6E7E6;
+        color: #000000;
+    }
+
+    .signup-page{
+        font-size: large;
+        height: 60%;
+        padding-top: 5%;
+        padding-left: 25%;
+        padding-right: 20%;
+        padding-bottom: 4.5%;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    .signup-page .pw{
+        display: flex;
+    }
+
+    .type-pw{
+        margin-right: 70px;
+    }
+
+    .ID input[type="text"], .Email input[type="text"] {
+        border-radius: 5px;
+        width: 1200px; 
+        height: 50px; 
+    }
+
+    .pw input[type="text"] {
+        border-radius: 5px;
+        width: 560px; 
+        height: 50px; 
+    }
+
+
+    .signup-page button {
+        background-color: #F8D57E;
+        color: black;
+        font-size: large;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 0 450px; /* 가로 중앙 정렬 설정 */
+        width: 280px;
+    }
+
+</style>
+<body>
+    <header>
+        <h2>GamjaMarket</h2>
+        <nav>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <input type="text" placeholder="찾으시는 상품명을 입력하세요">
+                <button class="search-button">검색</button>
+                <li><a href="login.html">회원가입/로그인</a></li>
+                <li><a href="mypage-profile.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="signup-page">
+        <form action="signUp.php" method="post">
+            <div class="ID">
+                <h3>ID</h3>
+                <input type="text" placeholder="아이디를 입력하세요">
+            </div><br><br>
+
+            <div class="pw">
+                <div class="type-pw">
+                    <h3>PW</h3>
+                    <input type="text" placeholder="비밀번호를 입력하세요">
+                </div>
+
+                <div class="check-pw">
+                    <h3>PW 확인</h3>
+                    <input type="text" placeholder="동일한 비밀번호를 입력하세요">
+                </div>
+            </div><br><br>
+            
+            <div class="Email">
+                <h3>Email</h3>
+                <input type="text" placeholder="이메일을 입력하세요">
+            </div><br><br><br><br>
+
+            <button type="submit">회원가입</button>
+        </form>
+    </div>
+</body>

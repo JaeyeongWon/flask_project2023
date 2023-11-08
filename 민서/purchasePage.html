@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>상품 결제 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        nav {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;              /*ul을 가로로 나열*/
+        }
+
+
+        nav a {
+            text-decoration: none;
+            white-space: nowrap;        /* 텍스트가 한 줄로 나타나도록 합니다. */
+            color: #000000;
+        }
+
+        nav li{
+            margin: 0 100px;             /*각 요소들 사이의 간격*/
+        }
+
+        nav input {
+            padding: 10px 20px;          /* 위아래 10px, 좌우 20px의 패딩을 설정 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 1200px;               /* 원하는 길이로 조절 */
+            height: 20px;
+        }
+
+        .search-button{
+            background-color: #F6E7E6;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        header{
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-bottom: 20px;
+            background-color: #F6E7E6;
+            color: #000000;
+        }
+
+        .third-navbar {
+            background-color: #e1b99c;
+            height: 60px;
+            font-size: 20px;
+            display: flex;
+            align-items: center; /* 수직 가운데 정렬을 위해 추가 */
+        }
+
+        .third-navbar a {
+            font-weight: bold;
+            color:brown;
+            margin-left:5%;
+        }
+
+        .third-navbar a:not(:nth-child(6)):not(:nth-child(7)) {
+            color: white;
+        }
+
+        .third-navbar a:nth-child(even) {
+            margin-left: 0; /* 짝수 인덱스(0부터 시작)의 요소의 왼쪽 마진 초기화 */
+        }
+
+        .third-navbar a:nth-child(odd) {
+            margin-right: 10px; /* 홀수 인덱스(0부터 시작)의 요소의 우측 마진 설정 */
+        }
+
+        .all-part{
+            display: flex;
+        }
+
+        .left-part{
+            margin-left: 320px;
+            padding-top: 50px;
+            float:left;
+        }
+
+        .right-part{
+            margin-right: 500px;
+            padding-top: 50px;
+            float: right;
+ 
+        }
+
+        .about-item{
+            display: flex;
+            margin-bottom: 100px;
+        }
+        
+        .image-container{
+            background-color: gray;
+            width: 470px;
+            height: 400px;
+        }
+
+        .item-info{
+            margin-left: 50px;
+        }
+
+        .r-1 button, .r-2 button, .r-3 button{
+            border:#000000 solid 1px;
+            border-radius: 5px;
+            background-color: white;
+            width: 200px;
+            height: 60px;
+            font-size: 20px;
+            margin-right: 60px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 20px; /* 원하는 글꼴 크기로 조절 */
+            margin-right: 100px;
+        }
+
+        .purchase-item{
+            border: none;
+            border-radius: 5px;
+            background-color: #F8D57E;
+            padding: 10px 20px;
+            font-size: 20px;
+            width: 470px;
+            height: 70px;
+            margin-top: 80px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>GamjaMarket</h2>
+        <nav>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <input type="text" placeholder="찾으시는 상품명을 입력하세요">
+                <button class="search-button">검색</button>
+                <li><a href="login.html">회원가입/로그인</a></li>
+                <li><a href="mypage-profile.html">마이페이지</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="third-navbar">
+        <a>나의 위치 | </a>
+        <a href="#">홈화면 X</a>
+        <a href="#">상품전체조회 X</a>
+        <a href="#">상품상세 X</a>
+        <a href="#">상품결제 X</a>
+    </div>
+
+    <div class="all-part"></div>
+        <div class="left-part">
+            <h2>거래 품목</h2>
+            <div class="about-item">
+                <div class="image-container">
+                    <img src="텀텀텀텀블러.png" alt="상품사진">
+                </div>
+                <div class="item-info">
+                    상품명
+                    <h3>끝내주는 텀블러</h3><br>
+                    거래대상
+                    <h3>맛있는 감자</h3><br>
+                    거래가격
+                    <h3>20000원</h3><br>
+                </div>
+            </div>
+
+            <div class="deliver-select"></div>
+                <h2>거래 방식</h2>
+                <input type="radio" name="deliver" value="direct" id="direct">
+                <label for="direct">직거래</label>
+
+                <input type="radio" name="deliver" value="nondirect-box" id="nondirect-box">
+                <label for="nondirect-box">비대면 상자</label>
+
+                <input type="radio" name="deliver" value="parcel" id="parcel">
+                <label for="parcel">택배</label>
+            </div>
+        </div>
+
+        <div class="right-part">
+            <h2>결제 정보</h2>
+            <br><br>
+            <div class="r-1">
+                <button id="direct-button" class="payment-button" data-group="r-1">직거래</button>
+                <button id="card-button" class="payment-button" data-group="r-1">카드</button>
+            </div><br>
+            <div class="r-2">
+                <button id="virtual-account-button" class="payment-button" data-group="r-2">가상 계좌</button>
+                <button id="phone-button" class="payment-button" data-group="r-2">휴대폰</button>
+            </div><br>
+            <div class="r-3">
+                <button id="naver-pay-button" class="payment-button" data-group="r-3">네이버페이</button>
+                <button id="kakao-pay-button" class="payment-button" data-group="r-3">카카오페이</button>
+            </div><br>
+            <button type="submit" class="purchase-item">결제 하기</button>
+        </div>
+    </div>
+</body>
