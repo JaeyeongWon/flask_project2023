@@ -2,7 +2,7 @@ import pyrebase
 import json 
 
 class DBhandler:
-    def __init__(self ):
+    def __init__(self):
         with open('./authentication/firebase_auth.json') as f:
             config=json.load(f)
         firebase = pyrebase.initialize_app(config)
@@ -74,6 +74,22 @@ class DBhandler:
             if key_value == name:
                 target_value=res.val()
         return target_value
+    
+    def get_items_bycategory(self, cate):
+        items = self.db.child("item").get()
+        target_value=[]
+        target_key=[]
+        for res in items.each():
+            value = res.val()
+            key_value = res.key()
+            if value['trade_type'] == cate:
+                target_value.append(value)
+                target_key.append(key_value)
+        print("######target_value",target_value)
+        new_dict={}
+        for k,v in zip(target_key,target_value):
+            new_dict[k]=v
+        return new_dict
     
     def reg_buy(self, buyer_id, trans_mode, trans_media, item_name):
         buy_info = {

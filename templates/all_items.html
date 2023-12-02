@@ -118,6 +118,34 @@
         <div id="article">
             <br><h2>전체 상품 조회</h2><br><br>
         </div>
+        <script>
+            $(document).ready(function () {
+                // trade_type 값을 기반으로 선택된 옵션을 설정합니다.
+                var trade_type = "{{trade_type}}";  // 이 부분을 추가하여 trade_type 값을 가져옵니다.
+
+                // 옵션을 선택한 경우에만 URL을 업데이트하도록 수정합니다.
+                $('#trade_type').on('change', function() {
+                    var selectedTradeType = $(this).val();
+                    if (selectedTradeType !== trade_type) {
+                        location.href = this.value;
+                    }
+                });
+
+                // trade_type 값을 기반으로 선택된 옵션을 설정합니다.
+                $('#trade_type option:contains("' + trade_type + '")').prop("selected", true);
+            });
+        </script>
+
+        <div>
+            <!-- trade_type 매개변수를 포함한 URL로 업데이트합니다. -->
+            <select id="trade_type" name="trade_type" onchange="location=this.value">
+                <option value="{{url_for('view_list', page=i, trade_type='all')}}" {% if trade_type == 'all' %}selected{% endif %}>전체</option>
+                <option value="{{url_for('view_list', page=i, trade_type='regular')}}" {% if trade_type == 'regular' %}selected{% endif %}>일반</option>
+                <option value="{{url_for('view_list', page=i, trade_type='auction')}}" {% if trade_type == 'auction' %}selected{% endif %}>경매</option>
+            </select>
+        </div>
+
+
         {% if total > 0 %}
         <p>
             상품 리스트 -- 현재까지 {{total}}개 등록됨
